@@ -14,24 +14,66 @@
 
 #define tamanho 10
 
+int topo = 0;
+
 int pilha[tamanho];
 
 int Size_Pilha(){
-    int i = 0;
-    while(pilha[i] != 0){
-        i++;
+    return topo;
+}
+
+void push(int valor){
+    if(topo < tamanho){
+        pilha[topo] = valor;
+        topo++;
+        printf("Valor adicionado!\n");
+    }else{
+        printf("Pilha cheia\n");
     }
-    return i;
+}
+
+void pop(){
+    if(topo > 0){
+        pilha[topo-1] = 0;
+        topo--;
+    }else{
+        printf("Pilha vazia\n");
+    }
+}
+
+void peek(){
+    if(topo > 0){
+        printf("Topo: %d\n", pilha[topo-1]);
+    }else{
+        printf("Pilha vazia\n");
+    }
+}
+
+void size(){
+    printf("Tamanho da pilha: %d\n", topo);
+}
+
+void list(){
+    for(int i = 0; i < Size_Pilha(); i++){
+        printf("%d ", pilha[i]);
+    }
+    printf("\n");
+}
+
+void clear(){
+    for(int i = 0; i < tamanho; i++){
+        pilha[i] = 0;
+    }
 }
 
 int main(){
-
     
     char op;
     int aux;
 
     do{
-        printf("1 - Push\n");
+        printf("---------------Bem vindo ao meu sistema de pilhas---------------\n");
+        printf("3 - Push\n");
         printf("2 - Pop\n");
         printf("3 - Peek\n");
         printf("4 - Size\n");
@@ -41,45 +83,29 @@ int main(){
         printf("Opcao: ");
         scanf("%c", &op);
         getchar();
+        system("clear");
 
         switch(op){
             case '1':
-                if(Size_Pilha() < tamanho){
-                    printf("Digite o valor: ");
-                    scanf("%d", &aux);
-                    getchar();
-                    pilha[Size_Pilha()] = aux;
-                }else{
-                    printf("Pilha cheia\n");
-                }
+                printf("Digite o valor: ");
+                scanf("%d", &aux);
+                getchar();
+                push(aux);
                 break;
             case '2':
-                if(Size_Pilha() > 0){
-                    pilha[Size_Pilha()-1] = 0;
-                }else{
-                    printf("Pilha vazia\n");
-                }
+                pop();
                 break;
             case '3':
-                if(Size_Pilha() > 0){
-                    printf("Topo: %d\n", pilha[Size_Pilha()-1]);
-                }else{
-                    printf("Pilha vazia\n");
-                }
+                peek();
                 break;
             case '4':
-                printf("Tamanho da pilha: %d\n", Size_Pilha());
+                size();
                 break;
             case '5':
-                for(int i = 0; i < Size_Pilha(); i++){
-                    printf("%d ", pilha[i]);
-                }
-                printf("\n");
+                list();
                 break;
             case '6':
-                for(int i = 0; i < tamanho; i++){
-                    pilha[i] = 0;
-                }
+                clear();
                 break;
             case '7':
                 break;
