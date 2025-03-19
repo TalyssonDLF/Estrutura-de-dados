@@ -1,0 +1,19 @@
+# Arquivos de compilação
+*.o
+*.out
+*.exe
+
+# Arquivos de debug
+*.dSYM/
+*.stackdump
+
+# Arquivos temporários do editor
+*.swp
+*~
+*.bak
+
+# Arquivos de logs
+*.log
+
+# Diretórios de build (caso use Makefile)
+build/
