@@ -34,7 +34,7 @@ void push(int valor){
 
 void pop(){
     if(topo > 0){
-        pilha[topo-1] = 0;
+        pilha[topo-1] = NULL;
         topo--;
     }else{
         printf("Pilha vazia\n");
